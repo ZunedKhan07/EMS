@@ -9,4 +9,9 @@
   
   body{
     background: #000;
+    color: aliceblue;
+  }
+
+  #tasklist::-webkit-scrollbar{
+   display: none;
   }
