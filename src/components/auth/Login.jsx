@@ -1,15 +1,15 @@
 import React, { useState, useSyncExternalStore } from 'react'
 
-const Login = (e) => {
- 
+const Login = ({handleLogin}) => {
   
    const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
   
    const submitHandler = (e) => {
-    e.preventDefault()
-    console.log("email is", email);
-    console.log("password is", password);
+    e.preventDefault();
+    handleLogin(email, password);
+    // console.log("email is", email);
+    // console.log("password is", password);
     setEmail("")
     setPassword("")
    }    
