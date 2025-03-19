@@ -1,43 +1,28 @@
- import React, { useContext, useEffect, useState } from 'react'
- import Login from './components/auth/Login'
- import EmployeeDashboard from './components/auth/dashboard/EmployeeDashboard'
+import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Register from './components/auth/Register'
+import Login from './components/auth/Login'
 import AdminDashboard from './components/auth/dashboard/AdminDashboard'
-import { getLocalStorage, setLocalStorage } from './utils/LocalStorage'
-import { AuthContext } from './context/AuthProvider'
+import EmployeeDashboard from './components/auth/dashboard/EmployeeDashboard'
 
- const App = () => {
 
-  // useEffect( () => {
-  //   //  setLocalStorage()
-  //   getLocalStorage()
-  // }
-
-     const [user, setUser] = useState(null)
-
-     const handleLogin = (email, password) => {
-   if (email == 'user@me.com' && password =='123'){
-       setUser('employee')
-    // console.log(User)
-     } else if(email == 'admin@me.com' && password == '123'){
-      setUser('admin')
-      // console.log(User)
-     }
-     else {
-      alert("invelid credentials")
-     }
-    }
-
-    const data = useContext(AuthContext);
-    console.log(data);
-
-   return (
-     <>
-       {!user ? <Login handleLogin={handleLogin} /> : ''}
-       {user == 'admin' ? <AdminDashboard /> : <EmployeeDashboard />}
-       {/* <EmployeeDashboard />  */}
-       {/* <AdminDashboard />  */}
-     </>
-   )
- }
+const App = () => {
+  return (
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Register/>}/>
+          <Route path="/login" element={<Login/>}/>
+          if (email === "admin@example.com" && password === "admin") {
+        <Route path='/AdminDashboard' element={<AdminDashboard />}/>
+      } else {
+        <Route path='/EmployeeDashboard' element={<EmployeeDashboard />}/>
+      }
+        </Routes>
+      </BrowserRouter>
+      
+    </>
+  )
+}
 
 export default App
